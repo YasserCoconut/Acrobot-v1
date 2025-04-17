@@ -100,4 +100,4 @@ Contributions are welcome! If you'd like to improve this project, feel free to:
 This project is licensed under the [MIT License](LICENSE).
 
 > Q-tables (.npy) are not included in this repo due to file size limits. Contact me for the files or train from scratch.
-"# Acrobot-v1" 
+
