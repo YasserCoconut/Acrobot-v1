@@ -175,7 +175,7 @@ def train_dqn(env, online_net, target_net, optimizer, replay_buffer,
             print(f"Episode {episode}, Epsilon: {epsilon:.3f}, Average Reward (last 100): {avg_reward:.2f}")
             
             # Graph mean rewards
-            plot_rewards(episode_rewards, episode, "Mean Reward per Episode (DQN)", "plots/Acrobot_DQN_Training.png")
+            plot_rewards(episode_rewards, episode, "Mean Reward per train Episode (DQN)", "plots/Acrobot_DQN_Training.png")
     
     return episode_rewards
 
@@ -221,7 +221,7 @@ def test_dqn(model, env_name, test_episodes, render_episodes, device):
             print(f"Test Episode {episode}: Total Reward = {total_reward}, Average Reward (last 10) = {avg_last10:.2f}")
             
             # Graph mean rewards
-            plot_rewards(test_rewards, episode, 'Mean Reward Per Episode (DQN)' ,'plots/Acrobot_Test_Rewards_DQN.png')
+            plot_rewards(test_rewards, episode, 'Mean Reward Per test Episode (DQN)' ,'plots/Acrobot_Test_Rewards_DQN.png')
         
         env.close()
     return test_rewards
@@ -377,7 +377,7 @@ def train_agent_QL(Q_table, boundaries, env, num_episodes, alpha, gamma, epsilon
             print(f"Episode: {episode}, Epsilon: {epsilon:0.2f}, Best Reward so far = {best_reward}, Mean Reward (last 100 episodes) = {mean_reward:.2f}")
             
             # Graph mean rewards
-            plot_rewards(total_rewards, episode, "Mean Reward per Episode (Q-Learning)", "plots/Acrobot_Tabular_QLearning_Training.png")
+            plot_rewards(total_rewards, episode, "Mean Reward per train Episode (Q-Learning)", "plots/Acrobot_Tabular_QLearning_Training.png")
 
     return Q_table
 
@@ -445,7 +445,7 @@ def train_agent_SARSA(Q_table, boundaries, env, num_episodes, alpha, gamma, epsi
             print(f"Episode: {episode}, Epsilon: {epsilon:0.2f}, Best Reward so far = {best_reward}, Mean Reward (last 100 episodes) = {mean_reward:.2f}")
             
             # Graph mean rewards
-            plot_rewards(total_rewards, episode, "Mean Reward per Episode (SARSA)", "plots/Acrobot_Tabular_SARSA_Training.png")
+            plot_rewards(total_rewards, episode, "Mean Reward per train Episode (SARSA)", "plots/Acrobot_Tabular_SARSA_Training.png")
     
     return Q_table
 
@@ -548,7 +548,7 @@ def main():
 
         print("Starting testing phase for Q-Learning...")
         test_rewards = test_agent(Q_table, boundaries, env, test_episodes,
-                                  "Mean Reward per Episode (Q-Learning)", "plots/Acrobot_Tabular_QLearning_Test.png",
+                                  "Mean Reward per test Episode (Q-Learning)", "plots/Acrobot_Tabular_QLearning_Test.png",
                                   render_episodes)
         avg_reward = np.mean(test_rewards)       
         # Compute performance percentage.
@@ -595,7 +595,7 @@ def main():
 
         print("Starting testing phase for SARSA...")
         test_rewards = test_agent(Q_table, boundaries, env, test_episodes,
-                                  "Mean Reward per Episode (SARSA)", "plots/Acrobot_Tabular_SARSA_Test.png",
+                                  "Mean Reward per test Episode (SARSA)", "plots/Acrobot_Tabular_SARSA_Test.png",
                                   render_episodes)
         
         avg_reward = np.mean(test_rewards)
